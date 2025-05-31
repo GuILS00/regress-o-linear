@@ -1,0 +1,1 @@
+// Pode ser usado no futuro para funções auxiliares (logs, validações, etc.)
