@@ -4,7 +4,7 @@ use std::io::BufReader;
 
 #[derive(Debug, Deserialize)]
 pub struct Registro {
-    pub tempo: f64,
+    pub tempo: String,
     pub valor: f64,
 }
 
