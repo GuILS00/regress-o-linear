@@ -1,145 +1,82 @@
-# TimeWise Analytics
+🕒 TimeWise Analytics
+Um sistema em Rust para análise e previsão de séries temporais usando regressão linear, com suporte a CSV e JSON, visualização ASCII e geração de relatório automático.
 
-> Sistema de análise de séries temporais com estatísticas descritivas, regressão linear, visualização em ASCII e geração de relatórios — 100% em Rust.
+🚀 Funcionalidades
+📂 Leitura de séries temporais de arquivos .csv ou .json.
 
----
+📊 Cálculo de média e desvio padrão dos valores.
 
-## 📌 Visão Geral
+📈 Regressão linear simples para prever valores futuros.
 
-Este projeto acadêmico em Rust tem como objetivo ler séries temporais de arquivos CSV ou JSON, calcular estatísticas descritivas, aplicar regressão linear simples e gerar relatórios automatizados no terminal com previsão e métricas como R² e MSE. Também oferece uma visualização gráfica ASCII e entrada interativa.
+🔍 Exibição das previsões geradas.
 
-Ideal para análise rápida de tendências temporais com foco em desempenho, simplicidade e clareza.
+🖼️ Gráficos ASCII da série original e da previsão.
 
----
+📝 Geração de relatório completo (relatorio.txt) com:
 
-## ✅ Funcionalidades
+Caminho do arquivo analisado
 
-- 📥 **Leitura de dados**
-  - Suporte a arquivos `.csv` e `.json`
-  - Entrada interativa pelo terminal
+Estatísticas básicas
 
-- 📊 **Estatísticas descritivas**
-  - Média, mediana, mínimo, máximo, desvio padrão
+Fórmula da regressão
 
-- 📈 **Regressão linear simples**
-  - Ajuste da equação `y = a*x + b`
-  - Previsão de valores futuros
+Métricas (R² e MSE)
 
-- 🧮 **Métricas de avaliação**
-  - Coeficiente de determinação (R²)
-  - Erro quadrático médio (MSE)
+Lista de previsões por timestamp
 
-- 🖥️ **Visualização ASCII**
-  - Gráfico simples da série no terminal
+📦 Requisitos
+Rust
 
-- 📄 **Relatório gerado**
-  - Exibido no terminal e salvo no arquivo `relatorio.txt`
+Cargo (já vem com o Rust)
 
-- 🧪 **Testes**
-  - Testes automatizados no módulo `tests/`
+📁 Estrutura do Projeto
 
----
-
-## 📁 Estrutura do Projeto
-
-
-timewise_analytics/
-├── data/
-│   ├── exemplo.csv              # Exemplo de entrada em CSV
-│   └── exemplo.json             # Exemplo de entrada em JSON
+.
 ├── src/
-│   ├── analysis.rs              # Cálculo estatístico
-│   ├── data.rs                  # Leitura e parsing de dados
-│   ├── lib.rs                   # Módulo central
-│   ├── linear.rs                # Regressão linear oficial
-│   ├── linear.regression.rs     # Alternativa (não usada, pode ser ignorada)
-│   ├── main.rs                  # Interface interativa do terminal
-│   ├── report.rs                # Geração de relatório e persistência
-│   └── visual.rs                # Geração do gráfico ASCII
-├── target/                      # Gerado automaticamente (ignorado pelo Git)
-├── tests/
-│   └── integration_tests.rs     # Testes automatizados
-├── .gitignore                   # Arquivos ignorados pelo Git
-├── Cargo.lock                   # Lockfile do projeto
-├── Cargo.toml                   # Configurações e dependências
-├── README.md                    # Documentação do projeto
-└── relatorio.txt                # Relatório gerado (output persistido)
+│   ├── main.rs          # Entrada principal interativa
+│   ├── io.rs            # (opcional) Funções de leitura
+│   ├── linear.rs        # Regressão linear + métricas
+│   ├── visual.rs        # Gráficos ASCII
+│   └── report.rs        # Geração do relatório
+├── data/
+│   ├── exemplo.csv      # Exemplo de arquivo CSV
+│   └── exemplo.json     # Exemplo de arquivo JSON
+├── relatorio.txt        # Relatório gerado após execução
+├── Cargo.toml
+└── README.md
 
-
----
-
-## ▶️ Como Executar
-
-1. **Clone o projeto**
-
-```bash
-git clone https://github.com/GuILS00/regress-o-linear.git
-cd regress-o-linear/timewise_analytics
-
-Compile o projeto
-cargo build
-
-Execute o sistema
+📂 Como usar
+git clone https://github.com/seu-usuario/timewise-analytics.git
+cd timewise-analytics
 cargo run
 
-Execute os testes
-cargo test
+Digite o caminho do arquivo quando solicitado, por exemplo:
+data/exemplo.csv
 
-📥 Exemplos de Entrada
-Arquivo CSV (data.csv)
-csv
+📷 Exemplo de uso
 
-tempo,valor
-2023-01,12.0
-2023-02,15.5
-2023-03,17.2
+📊 Estatísticas:
+Média: 25.76
+Desvio padrão: 4.12
 
-Arquivo JSON (exemplo.json)
-json
-[
-  { "tempo": "2023-01", "valor": 12.0 },
-  { "tempo": "2023-02", "valor": 15.5 },
-  { "tempo": "2023-03", "valor": 17.2 }
-]
+📈 Regressão Linear:
+Fórmula: y = 0.93x + 20.12
+Coeficiente de determinação (R²): 0.8421
+Erro quadrático médio (MSE): 5.4123
 
-📤 Exemplo de Saída
-Estatísticas:
+🔍 Previsões:
+2024-01 => 20.12
+2024-02 => 21.05
+...
 
-Média: 14.90
+🖼️ Gráfico ASCII da série real:
+█ █ █ ▓ ▓ ░ ░ ▒ ▒ ░ ░
 
-Mediana: 15.50
+📃 Licença
+Projeto acadêmico. Livre para uso educacional.
 
-Máximo: 17.20
+✅ Status
+✅ Concluído com todos os requisitos funcionais implementados.
 
-Mínimo: 12.00
-
-Desvio Padrão: 2.10
-
-Regressão Linear: y = 2.60x + 9.40
-MSE: 1.28
-R²: 0.975
-
-Previsão:
-
-Próximo valor estimado: 19.8
-
-Gráfico ASCII:
-
-   *
-  **
- ***
-----
-
-📚 Dependências
-serde – Serialização JSON
-
-serde_json – Leitura de arquivos JSON
-
-csv – Leitura de arquivos CSV
-
-🎓 Projeto Acadêmico
-Este projeto foi desenvolvido como parte de um trabalho acadêmico no curso de Análise e Desenvolvimento de Sistemas, abordando conceitos de análise de dados, regressão e programação com Rust puro (sem frameworks externos).
-
-👤 Autor
-Guilherme "GuILS00"
-🔗 github.com/GuILS00
+⌨️ Autoria
+Desenvolvido por Guilherme da Lapa Serra para o projeto TimeWise Analytics (2025).
